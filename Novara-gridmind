@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novara Gridmind</title>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0b1220;
+  color: white;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.section {
+  padding: 120px 20px;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 10, 20, 0.75);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(59,130,246,0.15), transparent 60%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero h1 {
+  font-size: 64px;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  margin-top: 20px;
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+/* CTA */
+.cta {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  background: #3b82f6;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #2563eb;
+}
+
+/* TEXT REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* SECTIONS */
+.dark { background: #0b1220; }
+.light { background: #111a2e; }
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* SYSTEM GRID */
+.system {
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #111a2e;
+  padding: 25px;
+  border-radius: 12px;
+  width: 260px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(59,130,246,0.2), transparent);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* GRIDMIND VISUAL */
+.gridmind-visual {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.node {
+  width: 18px;
+  height: 18px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 25px #3b82f6;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* OUTCOME */
+.outcome {
+  background: black;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px;
+  background: #050a14;
+  text-align: center;
+  opacity: 0.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="https://cdn.coverr.co/videos/coverr-african-city-at-night-1572/1080p.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1 class="reveal">Power, Reimagined.</h1>
+    <p class="reveal">An intelligent energy architecture for a fully electrified continent.</p>
+    <a href="#system" class="cta reveal">Explore the System</a>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section dark">
+  <h2 class="reveal">Infrastructure is Breaking</h2>
+  <p class="reveal">
+    Millions live without reliable electricity. Grids are reactive, fragile, and outdated.
+  </p>
+</section>
+
+<!-- TRANSITION -->
+<section class="section light">
+  <h2 class="reveal">What if infrastructure could think?</h2>
+</section>
+
+<!-- SYSTEM -->
+<section class="section system" id="system">
+  <h2 class="reveal">Novara Gridmind Architecture</h2>
+
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Novara Layer</h3>
+      <p>Building-level generation and storage.</p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Gridmind Core</h3>
+      <p>AI-driven demand prediction.</p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Network Layer</h3>
+      <p>Distributed intelligent grid.</p>
+    </div>
+  </div>
+
+  <div class="gridmind-visual">
+    <div class="node"></div>
+    <div class="node"></div>
+    <div class="node"></div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="section outcome">
+  <h2 class="reveal">Not Just Electricity</h2>
+  <p class="reveal">Opportunity. Stability. Growth.</p>
+</section>
+
+<footer>
+  © 2026 Novara Gridmind
+</footer>
+
+<script>
+
+// GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+// HERO TEXT
+gsap.to(".reveal", {
+  opacity: 1,
+  y: 0,
+  duration: 1,
+  stagger: 0.2
+});
+
+// SCROLL SECTIONS
+gsap.utils.toArray(".section").forEach(section => {
+  gsap.from(section, {
+    opacity: 0,
+    y: 80,
+    duration: 1,
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%"
+    }
+  });
+});
+
+// CARDS
+gsap.from(".card", {
+  scrollTrigger: {
+    trigger: ".system",
+    start: "top 70%"
+  },
+  opacity: 0,
+  y: 60,
+  stagger: 0.2
+});
+
+</script>
+
+</body>
+</html>
